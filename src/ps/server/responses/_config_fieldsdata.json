@@ -1,0 +1,826 @@
+{
+    "ui": {
+        "enrol": {
+            "isLayoutSequential": true,
+            "layout": {
+                "order": [
+                    "personalinfo",
+                    "companyinfo",
+                    "cassnumber",
+                    "aboutyourself"
+                ],
+                "elements": {
+                    "personalinfo": {
+                        "fields": [
+                            {
+                                "name": "firstname",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "id": "id-first-name",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "TF",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[a-zA-Z0-9]+$",
+                                        "customMessageId": "form.firstname.errormessage.invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "lastname",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "id": "id-last-name",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "TF",
+                                "order": 2,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[ a-zA-Z]{1,20}$",
+                                        "customMessageId": "form.lastname.errormessage.invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "password",
+                                "id": "id-password",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "P",
+                                "order": 3,
+                                "path": {
+                                    "state": true,
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{8,20}$",
+                                        "customMessageId": "form.password.errormessage.invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "confirmpassword",
+                                "id": "id-confirm-password",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "order": 4,
+                                "path": {
+                                    "response": "",
+                                    "request": "object.memberAccount.memberProfile.customerPassword"
+                                },
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "P",
+                                "validations": [
+                                    {
+                                        "pattern": "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{8,20}$",
+                                        "customMessageId": "form.confirmpassword.errormessage.invalid"
+                                    },
+                                    {
+                                        "state": true,
+                                        "pattern": "^[fields]$",
+                                        "fields": [
+                                            "password"
+                                        ],
+                                        "customMessageId": "form.confirmpassword.errormessage.unEqual"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "emailaddress",
+                                "id": "id-emailAddress",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "TF",
+                                "order": 5,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
+                                        "customMessageId": "form.emailaddress.errormessage.invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "mobilenumber",
+                                "id": "id-mobileNumber",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "order": 6,
+                                "additional": [
+                                    {
+                                        "id": "id-mobileISDCode",
+                                        "name": "mobileISDCode",
+                                        "type": "lov",
+                                        "options": [
+                                            {
+                                                "label": "+973",
+                                                "value": "+973"
+                                            },
+                                            {
+                                                "label": "+974",
+                                                "value": "+974"
+                                            },
+                                            {
+                                                "label": "+975",
+                                                "value": "+975"
+                                            },
+                                            {
+                                                "label": "+976",
+                                                "value": "+976"
+                                            }
+                                        ],
+                                        "source": {
+                                            "type": "master",
+                                            "key": "country",
+                                            "selector": {
+                                                "label": "IsdCode",
+                                                "value": "IsdCode"
+                                            }
+                                        },
+                                        "path": {
+                                            "response": "",
+                                            "request": ""
+                                        },
+                                        "validations": [
+                                            {
+                                                "pattern": "^[+][0-9]{2,}$",
+                                                "customMessageId": "form.mobileISDCode.errorMessage.invalid"
+                                            }
+                                        ],
+                                        "required": true,
+                                        "visibility": true
+                                    }
+                                ],
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "B_TF",
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[0-9]{5,15}$",
+                                        "customMessageId": "form.mobilenumber.errormessage.invalid"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "companyinfo": {
+                        "fields": [
+                            {
+                                "name": "companyname",
+                                "id": "id-company-name",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "TF",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[a-zA-Z]+$",
+                                        "customMessageId": "form.companyname.errormessage.invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "country",
+                                "id": "id-country-name",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "visibility": true,
+                                "required": true,
+                                "selected": "selectedcountrycode",
+                                "action": "selectedcountrycode",
+                                "fieldType": "B",
+                                "order": 2,
+                                "additional": [
+                                    {
+                                        "id": "id-station",
+                                        "name": "selectedcountrycode",
+                                        "type": "lov",
+                                        "options": [
+                                            {
+                                                "label": "India",
+                                                "value": "NY"
+                                            },
+                                            {
+                                                "label": "Japan",
+                                                "value": "RM"
+                                            },
+                                            {
+                                                "label": "China",
+                                                "value": "LDN"
+                                            },
+                                            {
+                                                "label": "Australia",
+                                                "value": "IST"
+                                            },
+                                            {
+                                                "label": "Russia",
+                                                "value": "RUS"
+                                            }
+                                        ],
+                                        "source": {
+                                            "type": "master",
+                                            "key": "station",
+                                            "selector": {
+                                                "label": "stationCode",
+                                                "value": "stationCode"
+                                            }
+                                        },
+                                        "path": {
+                                            "response": "",
+                                            "request": ""
+                                        },
+                                        "validations": [
+                                            {
+                                                "pattern": "^[+][0-9]{2,}$",
+                                                "customMessageId": "form.mobileISDCode.errorMessage.invalid"
+                                            }
+                                        ],
+                                        "required": true,
+                                        "visibility": true
+                                    }
+                                ],
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[ a-zA-Z]{1,20}$",
+                                        "customMessageId": "form.country.errormessage.invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "station",
+                                "id": "id-password",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "B",
+                                "order": 3,
+                                "additional": [
+                                    {
+                                        "id": "id-station",
+                                        "name": "mobilestationcode",
+                                        "type": "lov",
+                                        "options": [
+                                            {
+                                                "label": "Station-1",
+                                                "value": "S1"
+                                            },
+                                            {
+                                                "label": "Station-2",
+                                                "value": "S2"
+                                            },
+                                            {
+                                                "label": "Station-3",
+                                                "value": "S3"
+                                            },
+                                            {
+                                                "label": "Station-4",
+                                                "value": "S4"
+                                            }
+                                        ],
+                                        "source": {
+                                            "type": "master",
+                                            "key": "station",
+                                            "selector": {
+                                                "label": "stationCode",
+                                                "value": "stationCode"
+                                            }
+                                        },
+                                        "path": {
+                                            "response": "",
+                                            "request": ""
+                                        },
+                                        "validations": [
+                                            {
+                                                "pattern": "^[+][0-9]{2,}$",
+                                                "customMessageId": "form.mobileISDCode.errorMessage.invalid"
+                                            }
+                                        ],
+                                        "required": true,
+                                        "visibility": true
+                                    }
+                                ],
+                                "path": {
+                                    "state": true,
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[a-zA-Z0-9]+$",
+                                        "customMessageId": "form.password.errormessage.invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "stationaddress",
+                                "id": "id-stationaddress",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "order": 4,
+                                "path": {
+                                    "response": "",
+                                    "request": "object.memberAccount.stationaddress.customerPassword"
+                                },
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "TF",
+                                "validations": [
+                                    {
+                                        "pattern": "^[ a-zA-Z]{1,20}$",
+                                        "customMessageId": "form.stationaddress.errormessage.invalid"
+                                    },
+                                    {
+                                        "state": true,
+                                        "pattern": "^[fields]$",
+                                        "fields": [
+                                            "password"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "postalcode",
+                                "id": "id-postalcode",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "visibility": true,
+                                "required": true,
+                                "order": 5,
+                                "fieldType": "TF",
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[0-9]{5,15}$",
+                                        "customMessageId": "form.postalcode.errormessage.invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "city",
+                                "id": "id-city",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "TF",
+                                "order": 6,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[ a-zA-Z]{1,20}$",
+                                        "customMessageId": "form.city.errormessage.invalid"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "cassnumber": {
+                        "fields": [
+                            {
+                                "name": "cassnumber",
+                                "id": "id-cassnumber",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "TF",
+                                "order": 3,
+                                "path": {
+                                    "state": true,
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[ a-zA-Z]{1,20}$",
+                                        "customMessageId": "form.cassnumber.errormessage.invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "cassconfirm",
+                                "value": "1",
+                                "id": "id-cassnumber",
+                                "class": "form-group col-12",
+                                "visibility": true,
+                                "required": false,
+                                "fieldType": "CB",
+                                "order": 3,
+                                "path": {
+                                    "state": true,
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "^[ a-zA-Z]{1,20}$",
+                                        "customMessageId": "form.cassconfirm.errormessage.invalid"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "aboutyourself": {
+                        "fields": [
+                            {
+                                "name": "list",
+                                "id": "id-responsibilities",
+                                "class": "form-group col-12",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "L_CB",
+                                "order": 3,
+                                "additional": [
+                                    {
+                                        "id": "id-responsibilities",
+                                        "name": "mobileISDCode",
+                                        "options": [
+                                            {
+                                                "label": "checkbox1",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "label": "checkbox2",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "label": "checkbox3",
+                                                "value": "3"
+                                            },
+                                            {
+                                                "label": "checkbox4",
+                                                "value": "4"
+                                            }
+                                        ],
+                                        "source": {
+                                            "type": "master",
+                                            "key": "country",
+                                            "selector": {
+                                                "label": "IsdCode",
+                                                "value": "IsdCode"
+                                            }
+                                        },
+                                        "path": {
+                                            "response": "",
+                                            "request": ""
+                                        },
+                                        "validations": [
+                                            {
+                                                "pattern": "^[+][0-9]{2,}$",
+                                                "customMessageId": "form.mobileISDCode.errorMessage.invalid"
+                                            }
+                                        ],
+                                        "required": true,
+                                        "visibility": true
+                                    }
+                                ],
+                                "path": {
+                                    "state": true,
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [
+                                    {
+                                        "pattern": "",
+                                        "customMessageId": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "buttons": {
+                    "options": [
+                        {
+                            "type": "button",
+                            "class": "l-btn l-btn--cancel",
+                            "label": "cancel"
+                        },
+                        {
+                            "type": "button",
+                            "class": "l-btn l-btn--primary",
+                            "label": "completeprofile"
+                        }
+                    ]
+                }
+            }
+        },
+        "invoice": {
+            "isLayoutSequential": true,
+            "layout": {
+                "elements": {
+                    "filters": {
+                        "fields": [
+                            {
+                                "name": "billingperiodyear",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "id": "id-billing-period-year",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "B",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [],
+                                "additional": [
+                                    {
+                                        "id": "id-billingperiodyear",
+                                        "name": "billingperiodyear",
+                                        "type": "lov",
+                                        "options": [
+                                            {
+                                                "label": "2015",
+                                                "value": "2015"
+                                            },
+                                            {
+                                                "label": "2016",
+                                                "value": "2016"
+                                            },
+                                            {
+                                                "label": "2017",
+                                                "value": "2017"
+                                            },
+                                            {
+                                                "label": "2018",
+                                                "value": "2018"
+                                            },
+                                            {
+                                                "label": "2019",
+                                                "value": "2019"
+                                            },
+                                            {
+                                                "label": "2020",
+                                                "value": "2020"
+                                            },
+                                            {
+                                                "label": "2021",
+                                                "value": "2021"
+                                            }
+                                        ],
+                                        "path": {
+                                            "response": "",
+                                            "request": ""
+                                        },
+                                        "validations": [],
+                                        "required": true,
+                                        "visibility": true
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "billingperiodmonth",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "id": "id-billing-period-month",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "B",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [],
+                                "additional": [
+                                    {
+                                        "id": "id-billingperiodmonth",
+                                        "name": "billingperiodmonth",
+                                        "type": "lov",
+                                        "options": [
+                                            {
+                                                "label": "Jan",
+                                                "value": "01"
+                                            },
+                                            {
+                                                "label": "Feb",
+                                                "value": "02"
+                                            },
+                                            {
+                                                "label": "Mar",
+                                                "value": "03"
+                                            },
+                                            {
+                                                "label": "Apr",
+                                                "value": "04"
+                                            },
+                                            {
+                                                "label": "May",
+                                                "value": "05"
+                                            },
+                                            {
+                                                "label": "Jun",
+                                                "value": "06"
+                                            },
+                                            {
+                                                "label": "Jul",
+                                                "value": "07"
+                                            },
+                                            {
+                                                "label": "Aug",
+                                                "value": "08"
+                                            },
+                                            {
+                                                "label": "Sep",
+                                                "value": "09"
+                                            },
+                                            {
+                                                "label": "Oct",
+                                                "value": "10"
+                                            },
+                                            {
+                                                "label": "Nov",
+                                                "value": "11"
+                                            },
+                                            {
+                                                "label": "Dec",
+                                                "value": "12"
+                                            }
+                                        ],
+                                        "path": {
+                                            "response": "",
+                                            "request": ""
+                                        },
+                                        "validations": [],
+                                        "required": true,
+                                        "visibility": true
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "billingperiodmonthpart",
+                                "class": "form-group col-lg-6 col-md-6 col-sm-6",
+                                "id": "id-billing-period-month-part",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "B",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [],
+                                "additional": [
+                                    {
+                                        "id": "id-billingperiodmonthpart",
+                                        "name": "billingperiodmonthpart",
+                                        "type": "lov",
+                                        "options": [
+                                            {
+                                                "label": "First Half",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "label": "Second Half",
+                                                "value": "2"
+                                            }
+                                        ],
+                                        "path": {
+                                            "response": "",
+                                            "request": ""
+                                        },
+                                        "validations": [],
+                                        "required": true,
+                                        "visibility": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "salesresults": {
+            "isLayoutSequential": true,
+            "layout": {
+                "elements": {
+                    "filters": {
+                        "fields": [
+                            {
+                                "name": "departuredatefrom",
+                                "class": "form-group col-lg-4 col-md-6 col-sm-6",
+                                "id": "id-departure-date-from",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "D",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [],
+                                "additional": []
+                            },
+                            {
+                                "name": "departuredateto",
+                                "class": "form-group col-lg-4 col-md-6 col-sm-6",
+                                "id": "id-departure-date-to",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "D",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [],
+                                "additional": []
+                            },
+                            {
+                                "name": "destinationtype",
+                                "class": "form-group col-lg-4 col-md-6 col-sm-6",
+                                "id": "id-destination-type",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "B",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [],
+                                "additional": [
+                                    {
+                                        "id": "id-destinationtype",
+                                        "name": "destinationtype",
+                                        "type": "lov",
+                                        "options": [
+                                            {
+                                                "label": "Airport",
+                                                "value": "airport"
+                                            }
+                                        ],
+                                        "path": {
+                                            "response": "",
+                                            "request": ""
+                                        },
+                                        "validations": []
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "airportregion",
+                                "class": "form-group col-lg-4 col-md-6 col-sm-6",
+                                "id": "id-airport-region",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "AC",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [],
+                                "additional": []
+                            },
+                            {
+                                "name": "awbnumber",
+                                "class": "form-group col-lg-4 col-md-6 col-sm-6",
+                                "id": "id-awb-number",
+                                "visibility": true,
+                                "required": true,
+                                "fieldType": "TF",
+                                "order": 1,
+                                "path": {
+                                    "response": "",
+                                    "request": ""
+                                },
+                                "validations": [],
+                                "additional": []
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

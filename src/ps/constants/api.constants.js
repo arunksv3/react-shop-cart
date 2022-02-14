@@ -1,0 +1,1 @@
+export const ENROLMENT_CONFIGURATION_URL = "/ps/getuserenrolfields"

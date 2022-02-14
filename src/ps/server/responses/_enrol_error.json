@@ -1,0 +1,9 @@
+{
+    "response": {
+        "data": [],
+        "code": 400,
+        "status": "failed",
+        "success": true,
+        "message": "enrolment.failed"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "response": {
+        "data": [],
+        "code": 200,
+        "status": "success",
+        "success": true,
+        "message": "enrolment.success"
+    }
+}
